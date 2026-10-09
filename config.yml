@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/sougou-personal-site
+  branch: main
+  # Direct publishing requires a configured OAuth provider.
+  # Do not put client secrets or access tokens in this public file.
+media_folder: "uploads"
+public_folder: "/uploads"
+locale: "ar"
+site_url: ""
+display_url: ""
+publish_mode: simple
+collections:
+  - name: "articles"
+    label: "المقالات"
+    folder: "content/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "عنوان المقال", name: "title", widget: "string" }
+      - { label: "التصنيف", name: "category", widget: "select", options: ["التفسير", "الحديث", "العقيدة", "اللغة العربية", "فوائد وتقييدات", "أخرى"] }
+      - { label: "التاريخ", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "ملخص المقال", name: "summary", widget: "text", required: false }
+      - { label: "نص المقال", name: "body", widget: "markdown" }
